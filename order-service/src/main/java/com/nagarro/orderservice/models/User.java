@@ -1,4 +1,4 @@
-package com.nagarro.userservice.models;
+package com.nagarro.orderservice.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 	@Id
-	private int id;
+	private Long id;
 	private String name;
 	private String age;
 	private String email;
@@ -15,17 +15,18 @@ public class User {
 
 	}
 
-	public User(String name, String age, String email) {
+	public User(Long id, String name, String age, String email) {
+		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.email = email;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

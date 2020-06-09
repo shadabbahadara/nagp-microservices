@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nagarro.userservice.data.UserRepository;
+import com.nagarro.userservice.exceptions.UserNotFoundException;
 import com.nagarro.userservice.models.User;
 
 @Service
@@ -18,10 +19,9 @@ public class UserServiceImpl implements UserService {
 	public User getUser(int userId) {
 		Optional<User> user = userRepository.findById(userId);
 		if (!user.isPresent()) {
-			// TODO NOT-FOUND 4040 exception
+			throw new UserNotFoundException();
 		}
 		return user.get();
-//		return new User("name", "23", "abs@gmail.com");
 	}
 
 	@Override
