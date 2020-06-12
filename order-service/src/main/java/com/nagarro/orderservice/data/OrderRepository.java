@@ -8,5 +8,5 @@ import com.nagarro.orderservice.models.Order;
 
 public interface OrderRepository extends CrudRepository<Order, Integer> {
 
-	public List<Order> findByUserId(int userId);
+	public List<Order> findByUserId(int id);
 }

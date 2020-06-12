@@ -1,5 +1,6 @@
 package com.nagarro.orderservice.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,21 @@ public class OrderServiceImpl implements OrderService {
 	private OrderRepository orderRepository;
 
 	@Override
-	public List<Order> getOrders(int userId) {
-		return orderRepository.findByUserId(userId);
-//		return Collections.singletonList(new Order(BigInteger.valueOf(1), BigDecimal.valueOf(250), LocalDate.now()));
+	public List<Order> getOrders() {
+		List<Order> orders = new ArrayList<>();
+		orderRepository.findAll().forEach(orders::add);
+		return orders;
 	}
 
+	@Override
 	public Order createOrder(Order order) {
 		return orderRepository.save(order);
 	}
+
+	@Override
+	public List<Order> getOrdersByUserId(int userId) {
+		return orderRepository.findByUserId(userId);
+	}
+
 
 }

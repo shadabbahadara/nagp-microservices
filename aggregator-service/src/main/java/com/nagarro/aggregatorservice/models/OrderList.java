@@ -1,17 +1,20 @@
 package com.nagarro.aggregatorservice.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class OrderList {
+	private List<Order> orders;
 
-	private String name;
-	private String age;
-	private String email;
+	public OrderList() {
+		orders = new ArrayList<>();
+	}
+
 }

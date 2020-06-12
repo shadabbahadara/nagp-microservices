@@ -1,4 +1,8 @@
-package com.nagarro.aggregatorservice.models;
+package com.nagarro.orderservice.dto;
+
+import java.util.List;
+
+import com.nagarro.orderservice.models.Order;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,9 +13,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
-
-	private String name;
-	private String age;
-	private String email;
+public class OrderResponse {
+	private List<Order> orders;
 }
