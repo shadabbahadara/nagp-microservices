@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.nagarro.userservice.models.User;
 import com.nagarro.userservice.services.UserServiceImpl;
+import com.nagarro.userservice.views.Views;
 
 @RestController
 @RequestMapping("/user")
@@ -20,6 +22,7 @@ public class UserResource {
 	private UserServiceImpl userService;
 
 	@GetMapping(path = "/{userId}")
+	@JsonView(Views.Get.class)
 	public User getUser(@PathVariable("userId") int userId) {
 		return userService.getUser(userId);
 	}
