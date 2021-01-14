@@ -1,0 +1,44 @@
+version: "2"
+services:
+  discovery-server-container:
+    image: shadabbahadara/discovery-server
+    ports:
+      - "8761:8761"
+    networks:
+      - nagp
+
+  mysqldbcontainer:
+    image: mysql
+    networks:
+      - nagp
+ 
+  user-service-container:
+    image: shadabbahadara/user-service
+    ports:
+      - "8081:8081"
+    networks:
+      - nagp
+    depends_on:
+      - mysqldbcontainer
+      
+  order-service-container:
+    image: shadabbahadara/order-service
+    ports:
+      - "8082:8082"
+    networks:
+      - nagp
+    depends_on:
+      - mysqldbcontainer
+         
+  aggregator-service-container:
+    image: shadabbahadara/aggregator-service
+    ports:
+      - "8083:8083"
+    networks:
+      - nagp
+    depends_on:
+      - user-service-container
+      - order-service-container
+          
+networks:
+  nagp:
